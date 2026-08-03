@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VirtualCam — Privacy Policy</title>
+  <style>
+    body { font-family: 'Segoe UI', system-ui, sans-serif; max-width: 700px; margin: 0 auto; padding: 40px 20px; line-height: 1.7; color: #333; }
+    h1 { color: #1a1a2e; border-bottom: 2px solid #8b5cf6; padding-bottom: 12px; }
+    h2 { color: #2d2d44; margin-top: 28px; }
+    .updated { color: #666; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h1>VirtualCam — Privacy Policy</h1>
+  <p class="updated">Last updated: July 8, 2026</p>
+
+  <h2>Overview</h2>
+  <p>VirtualCam ("the Extension") is a browser extension that allows users to use a pre-captured photo as their webcam feed. This privacy policy explains how the Extension handles user data.</p>
+
+  <h2>Data Collection</h2>
+  <p><strong>We do not collect, transmit, or share any user data.</strong></p>
+  <p>The Extension does not:</p>
+  <ul>
+    <li>Send any data to external servers</li>
+    <li>Track user activity or browsing history</li>
+    <li>Use analytics or telemetry</li>
+    <li>Collect personally identifiable information</li>
+    <li>Communicate with any remote services</li>
+  </ul>
+
+  <h2>Data Storage</h2>
+  <p>The Extension stores the following data <strong>locally on your device only</strong>, using Chrome's built-in <code>chrome.storage.local</code> API:</p>
+  <ul>
+    <li><strong>Your uploaded image</strong> — Stored as a base64-encoded JPEG, used solely to generate the virtual camera feed. This image never leaves your device.</li>
+    <li><strong>Extension settings</strong> — A simple on/off toggle preference.</li>
+  </ul>
+  <p>All stored data can be cleared at any time by clicking "Clear Image" in the Extension popup, or by uninstalling the Extension.</p>
+
+  <h2>Permissions</h2>
+  <p>The Extension requests the following browser permissions:</p>
+  <ul>
+    <li><strong>storage</strong> — To save your uploaded image and settings locally.</li>
+    <li><strong>scripting</strong> — To inject the virtual camera script into web pages so they receive the virtual feed.</li>
+    <li><strong>Host permissions (all URLs)</strong> — Required so the virtual camera works on any website that requests camera access.</li>
+  </ul>
+
+  <h2>Third-Party Services</h2>
+  <p>The Extension uses <strong>no third-party services</strong>. The Google Fonts stylesheet referenced in the popup UI is loaded directly from Google's CDN for typography only.</p>
+
+  <h2>Changes to This Policy</h2>
+  <p>Any changes to this privacy policy will be reflected with an updated date at the top of this page.</p>
+
+  <h2>Contact</h2>
+  <p>For questions or concerns about this privacy policy, please open an issue on the Extension's GitHub repository or contact the developer directly.</p>
+</body>
+</html>

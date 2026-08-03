@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VirtualCam</title>
+  <link rel="stylesheet" href="popup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <div class="logo-icon">📷</div>
+        <div>
+          <h1 class="title">VirtualCam</h1>
+          <p class="subtitle">Virtual Camera Feed</p>
+        </div>
+      </div>
+      <div class="status-badge" id="statusBadge">
+        <span class="status-dot"></span>
+        <span class="status-text">Inactive</span>
+      </div>
+    </header>
+
+    <!-- Image Preview / Upload Area -->
+    <div class="card">
+      <div class="upload-area" id="uploadArea">
+        <div class="upload-content" id="uploadContent">
+          <div class="upload-icon">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="17 8 12 3 7 8"/>
+              <line x1="12" y1="3" x2="12" y2="15"/>
+            </svg>
+          </div>
+          <p class="upload-text">Drop your image here</p>
+          <p class="upload-hint">or click to browse</p>
+          <p class="upload-formats">JPG, PNG, WEBP • Max 5MB</p>
+        </div>
+        <img class="preview-image" id="previewImage" alt="Preview" style="display: none;">
+        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" hidden>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="card controls-card">
+      <div class="control-row">
+        <div class="control-label">
+          <span class="control-icon">⚡</span>
+          <div>
+            <span class="control-title">Enable Virtual Camera</span>
+            <span class="control-desc">Use your photo as camera feed</span>
+          </div>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="toggleSwitch" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button class="btn btn-secondary" id="clearBtn" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"/>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+        </svg>
+        Clear Image
+      </button>
+      <button class="btn btn-primary" id="uploadBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="17 8 12 3 7 8"/>
+          <line x1="12" y1="3" x2="12" y2="15"/>
+        </svg>
+        Upload Image
+      </button>
+    </div>
+
+    <!-- Info footer -->
+    <div class="footer">
+      <p class="footer-text">
+        Works on any site that uses webcam • Refresh page after upload
+      </p>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

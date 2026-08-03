@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head><title>Save Icons</title></head>
+<body style="font-family:sans-serif; padding:30px; background:#111; color:#eee;">
+<h2>VirtualCam — Save Icons</h2>
+<p>This page generates the extension icons and auto-downloads them.<br>
+<strong>Move the downloaded files into the <code>icons/</code> folder.</strong></p>
+<canvas id="c128" width="128" height="128" style="display:none;"></canvas>
+<canvas id="c48" width="48" height="48" style="display:none;"></canvas>
+<canvas id="c16" width="16" height="16" style="display:none;"></canvas>
+
+<div id="status" style="margin-top:20px; padding:16px; background:#1a1a2e; border-radius:8px;"></div>
+
+<script>
+function drawIcon(size) {
+  const c = document.getElementById('c' + size);
+  const ctx = c.getContext('2d');
+  
+  // Gradient background (rounded rect)
+  const grad = ctx.createLinearGradient(0, 0, size, size);
+  grad.addColorStop(0, '#8b5cf6');
+  grad.addColorStop(1, '#3b82f6');
+  const r = size * 0.18;
+  ctx.beginPath();
+  ctx.moveTo(r, 0); ctx.lineTo(size - r, 0);
+  ctx.quadraticCurveTo(size, 0, size, r);
+  ctx.lineTo(size, size - r);
+  ctx.quadraticCurveTo(size, size, size - r, size);
+  ctx.lineTo(r, size);
+  ctx.quadraticCurveTo(0, size, 0, size - r);
+  ctx.lineTo(0, r);
+  ctx.quadraticCurveTo(0, 0, r, 0);
+  ctx.closePath();
+  ctx.fillStyle = grad;
+  ctx.fill();
+  
+  // Camera body
+  const cx = size * 0.5, cy = size * 0.54;
+  const bw = size * 0.54, bh = size * 0.34;
+  ctx.fillStyle = 'rgba(255,255,255,0.93)';
+  ctx.beginPath();
+  if (ctx.roundRect) {
+    ctx.roundRect(cx - bw/2, cy - bh/2, bw, bh, size * 0.05);
+  } else {
+    ctx.rect(cx - bw/2, cy - bh/2, bw, bh);
+  }
+  ctx.fill();
+  
+  // Viewfinder bump
+  ctx.fillStyle = 'rgba(255,255,255,0.93)';
+  ctx.beginPath();
+  const vw = size * 0.18, vh = size * 0.1;
+  ctx.moveTo(cx + size*0.02, cy - bh/2);
+  ctx.lineTo(cx + size*0.06, cy - bh/2 - vh);
+  ctx.lineTo(cx + size*0.06 + vw, cy - bh/2 - vh);
+  ctx.lineTo(cx + size*0.06 + vw + size*0.04, cy - bh/2);
+  ctx.closePath();
+  ctx.fill();
+  
+  // Lens
+  ctx.fillStyle = '#6d28d9';
+  ctx.beginPath();
+  ctx.arc(cx, cy, size * 0.1, 0, Math.PI * 2);
+  ctx.fill();
+  
+  // Lens highlight
+  ctx.fillStyle = 'rgba(255,255,255,0.45)';
+  ctx.beginPath();
+  ctx.arc(cx - size*0.025, cy - size*0.025, size * 0.035, 0, Math.PI * 2);
+  ctx.fill();
+
+  return c.toDataURL('image/png');
+}
+
+const statusDiv = document.getElementById('status');
+const results = [];
+
+[128, 48, 16].forEach(size => {
+  const dataUrl = drawIcon(size);
+  
+  // Auto-download
+  const a = document.createElement('a');
+  a.href = dataUrl;
+  a.download = 'icon' + size + '.png';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  
+  results.push('✅ icon' + size + '.png generated & downloading');
+});
+
+statusDiv.innerHTML = results.join('<br>') + 
+  '<br><br><strong style="color:#8b5cf6;">Move the 3 files from Downloads → icons/ folder</strong>';
+</script>
+</body>
+</html>

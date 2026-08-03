@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "VirtualCam — Static Camera Feed",
+  "version": "1.0.0",
+  "description": "Use a pre-captured photo as your webcam feed. Upload once, works on any site.",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "VirtualCam"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ]
+}
