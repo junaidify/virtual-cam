@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VirtualCam — Photo Studio</title>
+  <link rel="stylesheet" href="capture.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="studio-container">
+    <header class="studio-header">
+      <div class="logo">📷</div>
+      <h1>VirtualCam Photo Studio</h1>
+      <p class="subtitle">Grant camera permission when prompted, frame your shot, and click to activate your virtual feed.</p>
+    </header>
+
+    <div class="viewfinder-card">
+      <div class="viewfinder-wrapper">
+        <video id="studioVideo" autoplay playsinline muted></video>
+        <div class="camera-badge" id="cameraBadge">
+          <span class="badge-dot"></span> <span id="badgeText">REQUESTING CAMERA...</span>
+        </div>
+        <div class="permission-prompt" id="permissionPrompt" style="display: none;">
+          <div class="prompt-icon">🔒</div>
+          <h2>Camera Permission Needed</h2>
+          <p>Please click <strong>"Allow"</strong> on Chrome's permission prompt above to enable your camera for VirtualCam.</p>
+          <button class="btn btn-primary" id="retryPermissionBtn">Request Permission Again</button>
+        </div>
+        <div class="flash-overlay" id="flashOverlay"></div>
+      </div>
+    </div>
+
+    <div class="studio-controls" id="studioControls">
+      <button class="btn btn-secondary" id="closeTabBtn">Cancel</button>
+      <button class="btn btn-primary" id="snapBtn" disabled>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <circle cx="12" cy="12" r="3" fill="currentColor"/>
+        </svg>
+        Click &amp; Use Photo
+      </button>
+    </div>
+
+    <div class="success-message" id="successMessage" style="display: none;">
+      <div class="success-icon">✅</div>
+      <h2>Photo Clicked &amp; Activated!</h2>
+      <p>Your virtual webcam feed is now live. Closing this tab...</p>
+    </div>
+  </div>
+
+  <script src="capture.js"></script>
+</body>
+</html>
